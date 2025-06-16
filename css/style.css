@@ -1,0 +1,232 @@
+/* Algemene stijlen */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #111;
+  color: #eee;
+  line-height: 1.6;
+}
+
+/* Header als grid: homefoto - titel - nav */
+header {
+  background-color: #222;
+  padding: 1rem 2rem;
+  display: grid;
+  grid-template-columns: 60px 1fr 200px;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Homefoto link & afbeelding */
+.home-photo-link {
+  grid-column: 1 / 2;
+  display: flex;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  margin-right: 0; /* niet nodig in grid */
+}
+
+.home-photo {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #ff7f50;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.home-photo:hover {
+  transform: scale(1.1);
+}
+
+/* Titel gecentreerd */
+header h1 {
+  grid-column: 2 / 3;
+  margin: 0;
+  font-size: 1.8rem;
+  text-align: center;
+  color: #eee;
+}
+
+/* Navigatie rechts */
+nav {
+  grid-column: 3 / 4;
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin: 0;
+}
+
+nav a {
+  font-weight: bold;
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+nav a:hover {
+  color: #ff7f50;
+}
+
+/* Content container */
+main {
+  padding: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* Gallery grid */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+  padding: 2rem 0;
+}
+
+.gallery-image {
+  width: 100%;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.gallery-image:hover {
+  transform: scale(1.05);
+}
+
+/* Fullscreen modal */
+#fullscreen-modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background-color: rgba(0, 0, 0, 0.9);
+  justify-content: center;
+  align-items: center;
+  cursor: zoom-out;
+}
+
+#fullscreen-modal img {
+  max-width: 90vw;
+  max-height: 90vh;
+  border-radius: 15px;
+}
+
+/* Responsive aanpassingen voor mobiel */
+@media (max-width: 600px) {
+  body {
+    font-size: 16px;
+  }
+
+  header {
+    display: flex !important; /* override grid */
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    gap: 0.5rem;
+    grid-template-columns: none;
+  }
+
+  .home-photo-link {
+    margin-bottom: 0.5rem;
+  }
+
+  header h1 {
+    order: 2;
+    text-align: center;
+  }
+
+  nav {
+    order: 3;
+    justify-content: center;
+    width: 100%;
+    gap: 1rem;
+  }
+
+  nav a {
+    display: inline-block;
+    margin: 0 0.5rem;
+  }
+
+  main {
+    padding: 1rem;
+  }
+
+  .gallery {
+    grid-template-columns: 1fr;
+    padding: 1rem 0;
+  }
+
+  /* Kleinere best photos op mobiel */
+  .best-photo-grid {
+    grid-template-columns: 1fr;
+    gap: 0.25rem;
+  }
+
+  .best-photo {
+    max-width: 100%;
+    margin: 0;
+  }
+}
+
+/* Beste foto sectie */
+.best-photos {
+  margin-top: 2rem;
+}
+
+.best-photos h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.best-photo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* 120px min breedte */
+  gap: 0.2rem; /* minder ruimte tussen foto's */
+  margin-top: 2rem;
+}
+
+.best-photo {
+  width: 100%;
+  max-width: 150px;
+  height: auto;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  margin: 0; /* geen extra marge */
+}
+
+.best-photo:hover {
+  transform: scale(1.1);
+}
+
+/* Strakke zwarte gallery knop */
+.gallery-button {
+  display: block;
+  margin: 2rem auto;
+  padding: 0.8rem 3rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #eee;
+  background-color: transparent;
+  border: 2px solid #eee;
+  border-radius: 6px;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+  text-decoration: none;
+  width: max-content;
+  user-select: none;
+}
+
+.gallery-button:hover,
+.gallery-button:focus {
+  background-color: #eee;
+  color: #111;
+  border-color: #eee;
+  outline: none;
+}
